@@ -1,0 +1,120 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --blue-dark: #0a192f;
+  --white: #ffffff;
+  --gray-light: #f1f1f1;
+  --gray-dark: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--blue-dark);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header,
+footer {
+  background-color: #0c223c;
+  text-align: center;
+  padding: 1rem;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+  background-color: rgb(205, 215, 255);
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  width: 90%;
+  max-width: 400px;
+  border: none;
+  border-radius: 8px;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  color: white
+}
+
+.stat-card {
+  background: #011362f0;
+  padding: 1rem;
+  border-radius: 10px;
+  min-width: 120px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.avis-list {
+  display: grid;
+  gap: 1rem;
+  color: white;
+}
+
+.avis-card {
+  background-color: #011362f0;
+  padding: 1rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.avis-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.avis-card p {
+  margin-bottom: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: var(--white);
+  color: var(--blue-dark);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+@media (min-width: 768px) {
+  .avis-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .avis-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

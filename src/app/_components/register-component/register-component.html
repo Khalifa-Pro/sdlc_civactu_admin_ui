@@ -1,46 +1,84 @@
 <div class="auth-container">
-    <form class="auth-form">
-      <h1 style="text-align: center;">CivActu</h1>
-      <p>Créez votre compte pour continuer</p>
-      <hr>
-      <div class="row">
-        <div class="col-6">
-          <input type="text" placeholder="Prénom" name="firstName" required />
-        </div>
-        <div class="col-6">
-          <input type="text" placeholder="Nom" name="lastName" required />
-        </div>
+  <form class="auth-form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <h1 style="text-align: center;">CivActu</h1>
+    <p>Créez votre compte pour continuer</p>
+    <hr>
+
+    <div class="row">
+      <div class="col-6">
+        <input
+          type="text"
+          placeholder="Prénom"
+          name="firstName"
+          [(ngModel)]="formData.firstName"
+          required
+        />
       </div>
-      <div class="row">
-        <div class="col-6">
-          <input type="email" placeholder="Adresse Email" name="email" required />
-        </div>
-        <div class="col-6">
-          <input type="password" placeholder="Mot de passe" name="password" required />
-        </div>
+      <div class="col-6">
+        <input
+          type="text"
+          placeholder="Nom"
+          name="lastName"
+          [(ngModel)]="formData.lastName"
+          required
+        />
       </div>
-      <div class="row">
-        <div class="col-6">
-          <input type="password" placeholder="Mot de passe" name="password" required />
-        </div>
-        <div class="col-6">
-          <input type="tel" placeholder="Téléphone" name="phone" required />
-        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <input
+          type="email"
+          placeholder="Adresse Email"
+          name="email"
+          [(ngModel)]="formData.email"
+          required
+        />
       </div>
-      <div class="row">
-        <div class="col-6">
-          <input type="text" placeholder="Ville" name="city" required />
-        </div>
-        <div class="col-6">
-          <select name="role" required>
-            <option value="">Sélectionnez un rôle</option>
-            <option value="CITIZEN">Citoyen</option>
-            <option value="ADMIN">Administrateur</option>
-            <option value="OFFICIAL">Élu</option>
-          </select>
-        </div>
+      <div class="col-6">
+        <input
+          type="password"
+          placeholder="Mot de passe"
+          name="password"
+          [(ngModel)]="formData.password"
+          required
+        />
       </div>
-      <button type="submit">S’inscrire</button>
-      <small>Déjà un compte ? <a routerLink="/login">Se connecter</a></small>
-    </form>
-  </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <input
+          type="tel"
+          placeholder="Téléphone"
+          name="phone"
+          [(ngModel)]="formData.phone"
+          required
+        />
+      </div>
+      <div class="col-6">
+        <input
+          type="text"
+          placeholder="Ville"
+          name="city"
+          [(ngModel)]="formData.city"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <select name="role" [(ngModel)]="formData.role" required>
+          <option value="">Sélectionnez un rôle</option>
+          <option value="CITIZEN">Citoyen</option>
+          <option value="ADMIN">Administrateur</option>
+          <option value="OFFICIAL">Élu</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!registerForm.form.valid">S’inscrire</button>
+    <small>Déjà un compte ? <a routerLink="/login">Se connecter</a></small>
+  </form>
+</div>

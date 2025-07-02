@@ -1,12 +1,13 @@
-import { Routes } from "@angular/router";
-import { Authlayout } from "./_components/authlayout/authlayout";
-import { AvisComponent } from "./_components/avis-component/avis-component";
-import { Dashboard } from "./_components/dashboard/dashboard";
-import { LoginComponent } from "./_components/login-component/login-component";
-import { Mainlayout } from "./_components/mainlayout/mainlayout";
-import { RegisterComponent } from "./_components/register-component/register-component";
-import { Statistique } from "./_components/statistique/statistique";
-import { Utilisateur } from "./_components/utilisateur/utilisateur";
+import { Routes } from '@angular/router';
+import { Authlayout } from './_components/authlayout/authlayout';
+import { AvisComponent } from './_components/avis-component/avis-component';
+import { Dashboard } from './_components/dashboard/dashboard';
+import { LoginComponent } from './_components/login-component/login-component';
+import { Mainlayout } from './_components/mainlayout/mainlayout';
+import { RegisterComponent } from './_components/register-component/register-component';
+import { Statistique } from './_components/statistique/statistique';
+import { Utilisateur } from './_components/utilisateur/utilisateur';
+import { guardsGuard } from './_security/guards-guard';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
   {
     path: '',
     component: Mainlayout,
+    canActivateChild: [guardsGuard],
     children: [
       { path: 'dashboard', redirectTo: 'utilisateurs', pathMatch: 'full' },
       { path: 'dashboard', component: Dashboard },

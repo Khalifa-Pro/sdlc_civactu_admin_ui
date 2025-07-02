@@ -27,11 +27,19 @@
             "styles": [
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css"
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "src/assets/vendor/boxicons/css/boxicons.min.css",
+              "src/assets/vendor/quill/quill.snow.css",
+              "src/assets/vendor/quill/quill.bubble.css",
+              "src/assets/vendor/remixicon/remixicon.css",
+              "src/assets/vendor/simple-datatables/style.css",
+              "src/assets/css/style.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/chart.js/dist/chart.umd.js"
             ]
+
           },
           "configurations": {
             "production": {

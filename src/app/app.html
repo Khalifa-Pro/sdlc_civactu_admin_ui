@@ -1,28 +1,2 @@
-<app-navbar></app-navbar>
-<main style="padding-bottom: 112px;">
-  <section class="search-bar">
-    <input type="text" [(ngModel)]="search" placeholder="Rechercher un avis..." (input)="filterAvis()" />
-  </section>
-
-  <section class="stats">
-    <div class="stat-card">Total Avis: {{ filteredAvis.length }}</div>
-    <div class="stat-card">Total Likes: {{ totalLikes }}</div>
-    <div class="stat-card">Total Commentaires: {{ totalCommentaires }}</div>
-  </section>
-
-  <section class="avis-list">
-    <div class="avis-card" *ngFor="let a of filteredAvis">
-      <h3>{{ a.titre }}</h3>
-      <p>{{ a.contenu }}</p>
-      <div class="actions">
-        <button (click)="likeAvis(a)">❤️ {{ a.likes }}</button>
-        <button (click)="commentAvis(a)">💬 {{ a.commentaires }}</button>
-        <button (click)="modifierAvis(a)">✏️ Modifier</button>
-        <button (click)="supprimerAvis(a)">🗑️ Supprimer</button>
-      </div>
-    </div>
-  </section>
-</main>
-<app-footer></app-footer>
 <router-outlet></router-outlet>
 

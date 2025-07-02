@@ -21,18 +21,6 @@ body {
   min-height: 100vh;
 }
 
-header,
-footer {
-  background-color: #0c223c;
-  text-align: center;
-  padding: 1rem;
-}
-
-main {
-  flex: 1;
-  padding: 1rem;
-  background-color: rgb(205, 215, 255);
-}
 
 .search-bar {
   margin-bottom: 1rem;
@@ -57,7 +45,7 @@ main {
 }
 
 .stat-card {
-  background: #011362f0;
+  background: #4263f3f0;
   padding: 1rem;
   border-radius: 10px;
   min-width: 120px;
@@ -72,7 +60,7 @@ main {
 }
 
 .avis-card {
-  background-color: #011362f0;
+  background-color: #4263f3f0;
   padding: 1rem;
   border-radius: 10px;
   position: relative;

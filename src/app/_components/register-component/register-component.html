@@ -1,1 +1,46 @@
-<p>register-component works!</p>
+<div class="auth-container">
+    <form class="auth-form">
+      <h1 style="text-align: center;">CivActu</h1>
+      <p>Créez votre compte pour continuer</p>
+      <hr>
+      <div class="row">
+        <div class="col-6">
+          <input type="text" placeholder="Prénom" name="firstName" required />
+        </div>
+        <div class="col-6">
+          <input type="text" placeholder="Nom" name="lastName" required />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <input type="email" placeholder="Adresse Email" name="email" required />
+        </div>
+        <div class="col-6">
+          <input type="password" placeholder="Mot de passe" name="password" required />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <input type="password" placeholder="Mot de passe" name="password" required />
+        </div>
+        <div class="col-6">
+          <input type="tel" placeholder="Téléphone" name="phone" required />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <input type="text" placeholder="Ville" name="city" required />
+        </div>
+        <div class="col-6">
+          <select name="role" required>
+            <option value="">Sélectionnez un rôle</option>
+            <option value="CITIZEN">Citoyen</option>
+            <option value="ADMIN">Administrateur</option>
+            <option value="OFFICIAL">Élu</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit">S’inscrire</button>
+      <small>Déjà un compte ? <a routerLink="/login">Se connecter</a></small>
+    </form>
+  </div>

@@ -1,0 +1,169 @@
+<div class="pagetitle">
+  <h1>Municipalité</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+      <li class="breadcrumb-item">Comptes</li>
+      <li class="breadcrumb-item active">Municipalité</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row mb-3">
+        <div class="col-3">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-journal-plus"></i> Ajouter
+          </button>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Localités des régions</h5>
+
+          <div class="table-responsive">
+            <table class="table table-striped align-middle" style="font-size: 14px;">
+              <thead class="table-light">
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Nom</th>
+                  <th>Code Postal</th>
+                  <th>Code INSEE</th>
+                  <th>Description</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of municipalites; let i = index">
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td>{{ m.name }}</td>
+                  <td>{{ m.postalCode }}</td>
+                  <td>{{ m.inseeCode }}</td>
+                  <td>{{ m.description }}</td>
+                  <td class="text-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-success" title="Modifier">
+                        <i class="bi bi-pencil-fill"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger" title="Supprimer">
+                        <i class="bi bi-trash-fill"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr *ngIf="municipalites.length === 0">
+                  <td colspan="6" class="text-center text-muted">Aucune municipalité disponible.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form (ngSubmit)="onSubmit(regionForm)" #regionForm="ngForm" class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ajouter une municipalité</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="name"
+              [(ngModel)]="newMunicipalite.name"
+              placeholder="Nom"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="postalCode"
+              [(ngModel)]="newMunicipalite.postalCode"
+              placeholder="Code postal"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="inseeCode"
+              [(ngModel)]="newMunicipalite.inseeCode"
+              placeholder="Code INSEE"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              name="description"
+              [(ngModel)]="newMunicipalite.description"
+              placeholder="Description"
+            ></textarea>
+          </div>
+
+          <div class="mb-3 row">
+            <div class="col">
+              <input
+                type="number"
+                step="any"
+                class="form-control"
+                name="latitude"
+                [(ngModel)]="newMunicipalite.latitude"
+                placeholder="Latitude"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="number"
+                step="any"
+                class="form-control"
+                name="longitude"
+                [(ngModel)]="newMunicipalite.longitude"
+                placeholder="Longitude"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <select
+              class="form-select"
+              name="regionId"
+              [(ngModel)]="newMunicipalite.regionId"
+              required
+            >
+              <option value="" disabled selected>Choisir une région</option>
+              <option *ngFor="let region of regions" [value]="region.id">
+                {{ region.name }}
+              </option>
+            </select>
+          </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary" [disabled]="regionForm.invalid">
+          Ajouter
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,103 @@
+<div class="pagetitle">
+  <h1>Région</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+      <li class="breadcrumb-item">Comptes</li>
+      <li class="breadcrumb-item active">Région</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row mb-3">
+        <div class="col-3">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-journal-plus"></i> Ajouter
+          </button>
+        </div>
+      </div>
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Listes des régions</h5>
+
+          <div class="table-responsive">
+            <table class="table table-striped align-middle" style="font-size: 14px;">
+              <thead class="table-light">
+                <tr>
+                  <th class="text-center">#</th>
+                  <th>Nom</th>
+                  <th>Code</th>
+                  <th>Description</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let region of regions; let i = index">
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td>{{ region.name }}</td>
+                  <td>{{ region.code }}</td>
+                  <td>{{ region.description }}</td>
+                  <td class="text-center">
+                    <div class="btn-group" role="group">
+                      <button class="btn btn-sm btn-outline-success" title="Modifier">
+                        <i class="bi bi-pencil-fill"></i>
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger" title="Supprimer">
+                        <i class="bi bi-trash-fill"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <tr *ngIf="regions.length === 0">
+                  <td colspan="6" class="text-center text-muted">Aucune région disponible.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Formulaire région</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulaire d'ajout -->
+        <form (ngSubmit)="onSubmit()" #regionForm="ngForm" class="mb-4">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <input type="text" class="form-control" name="name" [(ngModel)]="newRegion.name" placeholder="Nom" required />
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" name="code" [(ngModel)]="newRegion.code" placeholder="Code" required />
+            </div>
+            <div class="col-md-4">
+              <textarea class="form-control" name="description" [(ngModel)]="newRegion.description" placeholder="Description"></textarea>
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-success" [disabled]="regionForm.invalid">
+                <i class="bi bi-plus-circle"></i> Ajouter
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

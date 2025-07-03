@@ -1,0 +1,95 @@
+<div class="pagetitle mb-4">
+  <h1 class="h3 fw-bold text-primary">Gestion des utilisateurs</h1>
+  <nav>
+    <ol class="breadcrumb small">
+      <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+      <li class="breadcrumb-item">Comptes</li>
+      <li class="breadcrumb-item active">Utilisateurs</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card shadow border-0">
+        <div class="card-body p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="card-title m-0 text-dark">Liste des comptes utilisateurs</h5>
+            <button
+              class="btn btn-sm btn-primary"
+              (click)="openUserForm(undefined, 'create')"
+            >
+              <i class="bi bi-plus-circle me-1"></i> Ajouter un utilisateur
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle text-nowrap small">
+              <thead class="table-light">
+                <tr>
+                  <th>#</th>
+                  <th>Nom complet</th>
+                  <th>Email</th>
+                  <th>Rôle</th>
+                  <th>Statut</th>
+                  <th class="text-center">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ user.firstName }} {{ user.lastName }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>{{ user.status }}</td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-sm btn-outline-info me-1"
+                      (click)="openUserForm(user.id, 'view')"
+                      title="Voir"
+                    >
+                      Voir
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-warning me-1"
+                      (click)="openUserForm(user.id, 'edit')"
+                      title="Modifier"
+                    >
+                      Modifier
+                    </button>
+                    <button
+                      class="btn btn-sm btn-outline-danger"
+                      (click)="onDelete(user.id)"
+                      title="Supprimer"
+                    >
+                      Supprimer
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="!users.length && !isLoading">
+                  <td colspan="6" class="text-center text-muted">Aucun utilisateur trouvé.</td>
+                </tr>
+                <tr *ngIf="isLoading">
+                  <td colspan="6" class="text-center">
+                    <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                    Chargement...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Conteneur modal Bootstrap -->
+          <div #modalContainer class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div #modalContent></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,124 @@
+<div *ngIf="data">
+  <div class="modal-header">
+    <h5 class="modal-title text-primary">
+      {{ 
+        data.mode === 'create' ? 'Créer un utilisateur' : 
+        data.mode === 'edit' ? 'Modifier l\'utilisateur' : 
+        'Détails de l\'utilisateur' 
+      }}
+    </h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email *</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched"
+          [readonly]="data.mode === 'view'"
+          required
+        />
+        <div class="invalid-feedback">
+          Email invalide ou requis.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="firstName" class="form-label">Prénom</label>
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          [readonly]="data.mode === 'view'"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Nom</label>
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          class="form-control"
+          [readonly]="data.mode === 'view'"
+        />
+      </div>
+
+      <div class="mb-3" *ngIf="data.mode !== 'view'">
+        <label for="password" class="form-label">
+          Mot de passe
+          <span *ngIf="data.mode === 'create'">*</span>
+        </label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [class.is-invalid]="form.get('password')?.invalid && form.get('password')?.touched"
+          [attr.required]="data.mode === 'create' ? '' : null"
+          autocomplete="new-password"
+          placeholder="{{ data.mode === 'edit' ? 'Laisser vide pour ne pas changer' : '' }}"
+        />
+        <div class="invalid-feedback" *ngIf="form.get('password')?.errors as errors">
+          <div *ngIf="errors['required']">Le mot de passe est requis.</div>
+          <div *ngIf="errors['minlength']">
+            Le mot de passe doit contenir au moins 8 caractères.
+          </div>
+          <div *ngIf="errors['pattern']">
+            Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="role" class="form-label">Rôle</label>
+        <select
+          id="role"
+          formControlName="role"
+          class="form-select"
+        >
+          <option value="CITIZEN">Citoyen</option>
+          <option value="OFFICIAL">Officiel</option>
+          <option value="ADMIN">Administrateur</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="status" class="form-label">Statut</label>
+        <select
+          id="status"
+          formControlName="status"
+          class="form-select"
+        >
+          <option value="ACTIVE">Actif</option>
+          <option value="INACTIVE">Inactif</option>
+          <option value="SUSPENDED">Suspendu</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onCancel()"
+        >
+          Annuler
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          *ngIf="data.mode !== 'view'"
+          [disabled]="form.invalid"
+        >
+          Enregistrer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<section class="search-bar">
+    <input style="border: 1px solid gray;" type="text" placeholder="Rechercher un avis..." />
+</section>
+
+<section class="stats">
+    <div class="btn btn-secondary">Total Signalement : 0 </div>
+    <div class="btn btn-secondary">Total Likes : 0 </div>
+    <div class="btn btn-secondary">Total Commentaires : 0 </div>
+</section>
+
+<section class="avis-list">
+    <div class="card" style="width: 18rem;" *ngFor="let report of reports">
+        <img class="card-img-top" src="{{ report.images }}" style="height: 200px;" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title text-center text-dark font-weight-bold">{{ report.title.toUpperCase() }}</h5>
+            <p class="card-text text-center">{{ report.description }}</p>
+            <button (click)="modifierReport(report.id)" class="btn btn-secondary" style="width: 100%;">✏️ Modifier</button>
+            <br>
+            <br>
+            <button (click)="supprimerReport(report.id)" class="btn btn-danger" style="width: 100%;">🗑️ Supprimer</button>
+        </div>
+    </div>
+</section>

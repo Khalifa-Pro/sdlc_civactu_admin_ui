@@ -6,7 +6,7 @@ import { LoginComponent } from './_components/login-component/login-component';
 import { Mainlayout } from './_components/mainlayout/mainlayout';
 import { RegisterComponent } from './_components/register-component/register-component';
 import { Statistique } from './_components/statistique/statistique';
-import { Utilisateur } from './_components/utilisateur/utilisateur';
+import { ReportComponent } from './_components/report-component/report-component';
 import { guardsGuard } from './_security/guards-guard';
 
 export const routes: Routes = [
@@ -27,8 +27,8 @@ export const routes: Routes = [
       { path: 'dashboard', redirectTo: 'utilisateurs', pathMatch: 'full' },
       { path: 'dashboard', component: Dashboard },
       { path: 'avis', component: AvisComponent },
-      { path: 'utilisateurs', component: Utilisateur },
-      { path: 'statistiques', component: Statistique }
+      { path: 'statistiques', component: Statistique },
+      { path: 'report', component: ReportComponent },
     ]
   },
   { path: '**', redirectTo: 'login' }

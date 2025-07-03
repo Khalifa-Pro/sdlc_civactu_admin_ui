@@ -8,6 +8,10 @@ import { RegisterComponent } from './_components/register-component/register-com
 import { Statistique } from './_components/statistique/statistique';
 import { ReportComponent } from './_components/report-component/report-component';
 import { guardsGuard } from './_security/guards-guard';
+import { Localisation } from './_components/localisation/localisation';
+import { Municipalite } from './_components/municipalite/municipalite';
+import { Region } from './_components/region/region';
+import { usersRoutes } from './users/users.routes';
 
 export const routes: Routes = [
   {
@@ -29,6 +33,12 @@ export const routes: Routes = [
       { path: 'avis', component: AvisComponent },
       { path: 'statistiques', component: Statistique },
       { path: 'report', component: ReportComponent },
+      { path: 'statistiques', component: Statistique },
+      { path: 'localisations', component: Localisation},
+      { path: 'localisations/municipalites', component: Municipalite},
+      { path: 'localisations/regions', component: Region},
+      { path: 'utilisateurs', children: usersRoutes },
+      { path: 'statistiques', component: Statistique }
     ]
   },
   { path: '**', redirectTo: 'login' }

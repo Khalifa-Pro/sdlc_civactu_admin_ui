@@ -609,8 +609,8 @@ h6 {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
-  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  box-shadow: 0px 0px 20px rgba(79, 139, 243, 0.1);
+  background-color: #e7e8fd;
 }
 
 @media (max-width: 1199px) {
